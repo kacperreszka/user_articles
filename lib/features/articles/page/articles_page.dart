@@ -24,7 +24,7 @@ class ArticlesPage extends StatelessWidget {
       body: BlocProvider<ArticlesCubit>(
         create: (context) => ArticlesCubit(
           articlesRepository: ArticlesRepository(
-            remoteDataSource: ArticlesMockedDataSource(),
+            remoteDataSource: ArticlesRemoteDioDataSource(),
           ),
         )..fetchData(
             authorId: author.id,
@@ -69,7 +69,7 @@ class ArticlesPage extends StatelessWidget {
                         child: Text(
                           state.errorMessage ?? 'Unknown error',
                           style: TextStyle(
-                            color: Theme.of(context).errorColor,
+                            color: Theme.of(context).colorScheme.error,
                           ),
                         ),
                       );
